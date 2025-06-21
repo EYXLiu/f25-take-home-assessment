@@ -1,5 +1,18 @@
 # Lynkr Technical Assessment
 
+## Edits
+Built the endpoint for POST /weather <br/>
+Built the retrieval for getting /weather/{id} <br/>
+
+## Extra
+Added a storage for the ids, which is dropdown accessible, instead of manually typing in the codes <br/>
+Set up Redis Cache instead of Dictionary Memory for expireable ids instead of permanant ids <br/>
+* Set up a docker file for the backend (since redis runs on a seperate port), must run `docker-compose up --build` <br/>
+* Set up a retrival for the current keys and locations (stored at GET /weather)
+
+
+<hr>
+
 ## Overview
 
 Build a weather data system where users can submit weather requests and retrieve stored results by ID.
