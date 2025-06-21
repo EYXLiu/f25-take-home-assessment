@@ -11,6 +11,15 @@ Set up Redis Cache instead of Dictionary Memory for expireable ids instead of pe
 * Set up a docker file for the backend (since redis runs on a separate port), must run `docker-compose up --build` <br/>
 * Set up a retrieval for the current keys and locations (stored at GET /weather)
 
+## Start Backend (new)
+
+```bash
+cd backend
+docker-compose up --build
+```
+
+Backend will run on http://localhost:8000
+
 <hr>
 
 ## Overview
