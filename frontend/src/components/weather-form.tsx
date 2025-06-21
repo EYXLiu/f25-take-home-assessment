@@ -44,7 +44,11 @@ function isValidDate(date: Date | undefined): boolean {
   return date instanceof Date && !isNaN(date.getTime());
 }
 
-export function WeatherForm() {
+interface WeatherFormProps {
+  onResultId?: (id: string, location: string) => void;
+}
+
+export function WeatherForm({ onResultId }: WeatherFormProps) {
   const [calendarOpen, setCalendarOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(
     new Date(),
@@ -125,6 +129,10 @@ export function WeatherForm() {
           message: "Weather request submitted successfully!",
           id: data.id,
         });
+
+        if (onResultId) {
+          onResultId(data.id, formData.location);
+        }
         // Reset form after successful submission
         const today = new Date();
         setSelectedDate(today);
