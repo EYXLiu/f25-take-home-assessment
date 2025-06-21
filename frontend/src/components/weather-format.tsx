@@ -43,28 +43,30 @@ export function WeatherFormat({ id }: WeatherFormatProps) {
             <div><strong>Weather for:</strong> {location}</div>
             <div><strong>Date:</strong> {date}</div>
 
-            <div>
-                <div>{current.weather_descriptions[0]}</div>
-                <div>{current.temperature}°C (Feels like {current.feelslike}°C)</div>
+            <div className="pt-2">
+                <div><strong>Skies:</strong> {current.weather_descriptions[0]}</div>
+                <div><strong>Temperature:</strong> {current.temperature}°C (Feels like {current.feelslike}°C)</div>
             </div>
 
-            <div>
+            <div className="pt-2">
                 <div><strong>Observation Time:</strong> {current.observation_time}</div>
                 <div><strong>Wind:</strong> {current.wind_speed} km/h {current.wind_dir}</div>
             </div>
 
-            <div><strong>Humidity:</strong> {current.humidity}%</div>
-            <div><strong>Pressure:</strong> {current.pressure} mb</div>
-            <div><strong>Visibility:</strong> {current.visibility} km</div>
+            <div className="pt-2">
+                <div><strong>Humidity:</strong> {current.humidity}%</div>
+                <div><strong>Pressure:</strong> {current.pressure} mb</div>
+                <div><strong>Visibility:</strong> {current.visibility} km</div>
+            </div>
 
-            <div>
+            <div className="pt-2">
                 <strong>Astronomical Info:</strong>
                 <div>Sunrise: {current.astro.sunrise} | Sunset: {current.astro.sunset}</div>
                 <div>Moonrise: {current.astro.moonrise} | Moonset: {current.astro.moonset}</div>
                 <div>Moon phase: {current.astro.moon_phase} ({current.astro.moon_illumination}%)</div>
             </div>
 
-            <div>
+            <div className="pt-2">
                 <strong>Air Quality:</strong>
                 <div>CO: {current.air_quality.co}</div>
                 <div>NO₂: {current.air_quality.no2}</div>

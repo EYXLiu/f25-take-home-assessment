@@ -4,6 +4,7 @@ import { WeatherForm } from "@/components/weather-form";
 import { WeatherGet } from "@/components/weather-get";
 import { WeatherFormat } from "@/components/weather-format";
 import { useState, useEffect } from "react";
+import { Input } from "@/components/ui/input";
 
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
     WeatherGet().then(data => setIds(data));
   }, []); 
   const [selectedId, setSelectedId] = useState<string>("");
+  const [inputId, setInputId] = useState("");
   return (
     <div className="min-h-screen bg-background p-8">
       <div className="max-w-4xl mx-auto">
@@ -52,7 +54,7 @@ export default function Home() {
               <div className="flex flex-col items-center justify-start">
                 <div className="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border pt-6 pb-3 px-3 shadow-sm">
                   <select value={selectedId} onChange={(e) => setSelectedId(e.target.value)} className="border p-2 rounded w-48 mx-auto b-4">
-                    <option value="" disabled>
+                    <option value="">
                       -- Select an ID --
                     </option>
                     {Object.keys(ids).map((location) => (
@@ -61,7 +63,23 @@ export default function Home() {
                       </option>
                     ))}
                   </select>
-                  {selectedId && <WeatherFormat id={selectedId}/>}
+                  {selectedId ? (
+                    <WeatherFormat id={selectedId}/>
+                  ) : (
+                    <div className="relative flex gap-2">
+                      <Input
+                        id="date"
+                        value={inputId}
+                        placeholder="Select a date"
+                        className="bg-background pr-10"
+                        onChange={(e) => setInputId(e.target.value)}
+                      />
+                      <button className="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-300 shadow-md" 
+                          onClick={() => setSelectedId(inputId)}>
+                        Submit
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
